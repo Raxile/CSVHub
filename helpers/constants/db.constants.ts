@@ -39,3 +39,11 @@ export const SCHEMA_VALIDATION_MESSAGE: {
     REQUIRED: 'Please provide a country.',
   },
 };
+
+export const DB_RESPONSE_MESSAGE: {
+  STUDENTS_FOUND_SUCCESSFULLY: string;
+  STUDENT_ADD_SUCCESSFULLY: string;
+} = {
+  STUDENTS_FOUND_SUCCESSFULLY: 'Students found Successfully',
+  STUDENT_ADD_SUCCESSFULLY: 'Student Added Successfully',
+};
