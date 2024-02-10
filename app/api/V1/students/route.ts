@@ -1,19 +1,30 @@
 import { DB_RESPONSE_MESSAGE } from '@/helpers/constants/db.constants';
 import Student from '@/models/StudentSchema';
-import { customNextResponse } from '@/helpers/utils/db.utils-method';
+import {
+  errorResponse,
+  generateMetaData,
+  successResponse,
+} from '@/helpers/utils/db.utils-method';
 
 export async function GET(request: Request) {
   try {
-    const data = await Student.find({});
-    return customNextResponse(200, {
-      success: true,
-      message: DB_RESPONSE_MESSAGE.STUDENTS_FOUND_SUCCESSFULLY,
+    const { searchParams } = new URL(request.url);
+    const limit = Number(searchParams.get('limit')) || 10;
+    const page = Number(searchParams.get('page')) || 0;
+    const skip = page * limit;
+
+    const data = await Student.find({})
+      .skip(skip >= 0 ? skip : 0)
+      .limit(limit);
+    const totalData = await Student.countDocuments({});
+
+    return successResponse(
+      200,
+      DB_RESPONSE_MESSAGE.STUDENTS_FOUND_SUCCESSFULLY,
       data,
-    });
+      generateMetaData(page, limit, totalData, Math.ceil(totalData / limit)),
+    );
   } catch (error: any) {
-    return customNextResponse(400, {
-      message: `${error.message}`,
-      success: false,
-    });
+    return errorResponse(400, error.message);
   }
 }

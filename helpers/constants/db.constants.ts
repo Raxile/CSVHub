@@ -43,7 +43,27 @@ export const SCHEMA_VALIDATION_MESSAGE: {
 export const DB_RESPONSE_MESSAGE: {
   STUDENTS_FOUND_SUCCESSFULLY: string;
   STUDENT_ADD_SUCCESSFULLY: string;
+  STUDENT_DELETE_SUCCESSFULLY: string;
+  STUDENT_UPDATED_SUCCESSFULLY: string;
 } = {
   STUDENTS_FOUND_SUCCESSFULLY: 'Students found Successfully',
   STUDENT_ADD_SUCCESSFULLY: 'Student Added Successfully',
+  STUDENT_DELETE_SUCCESSFULLY: 'is Deleted Successfully',
+  STUDENT_UPDATED_SUCCESSFULLY: 'Student Updated Successfully',
+};
+
+export const ERROR_MESSAGE: {
+  404: string;
+  500: string;
+} = {
+  404: 'Not Found!',
+  500: 'Internal Server Error',
+};
+
+export const PAGINATION_DEFAULT_VALUE: {
+  PAGE_SIZE: string;
+  PAGE_NUMBER: string;
+} = {
+  PAGE_SIZE: '10',
+  PAGE_NUMBER: '0',
 };
