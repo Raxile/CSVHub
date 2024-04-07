@@ -12,6 +12,9 @@
   --light-blue: #68baa6;
   --dark-green: #005242;
   --disabled: #c6c6c6;
+  --table-header: #d6589f;
+  --table-row-even: #eaf5fd;
+  --table-row-odd: #fff8dc;
 }
 
 /* @media (prefers-color-scheme: dark) {
