@@ -1,41 +1,17 @@
-'use client';
 import React from 'react';
-import { MdAdd } from 'react-icons/md';
-import Button from '@/components/form-element/Button';
-import Table from '@/components/Table';
-import StudentsTable from './_components/StudentsTable';
+import { headers } from 'next/headers';
 
-const nodes = [
-  {
-    name: 'Shopping List',
-    dateOfBirth: 'create',
-    email: 'piyush@yopmail.com',
-    address: 'piyush',
-    country: 'India',
-  },
-  {
-    name: 'Shopping List',
-    dateOfBirth: 'TASK',
-    address: 'piyush',
-    email: 'piyush@yopmail.com',
-    country: 'India',
-  },
-];
+import TableContextWrapper from './_components/constant/TableContext';
+import { GET_STUDENTS_API_ENDPOINT } from '@/helpers/constants/api-endpoint.constant';
 
-const Page = () => (
-  <section className="container mx-auto mt-4">
-    <div className="flex justify-end">
-      <Button className="bg-[var(--light-blue)] text-white">
-        <MdAdd />
-        Add Students
-      </Button>
-    </div>
-    <StudentsTable>
-      {({ columnDef }: { columnDef: any[] }) => (
-        <Table columnDef={columnDef} nodes={nodes} />
-      )}
-    </StudentsTable>
-  </section>
-);
+const Page = async () => {
+  const headersList = headers();
+  // TODO: we create common method for fetch with documentation
+  let baseUrl = headersList.get('referer');
+  const data = await fetch(`${baseUrl}${GET_STUDENTS_API_ENDPOINT}`);
+  const apiRes = await data.json();
+
+  return <TableContextWrapper nodes={apiRes.data} />;
+};
 
 export default Page;
