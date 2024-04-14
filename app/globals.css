@@ -6,24 +6,27 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --primary: #be185d;
+  --primary-dark: #9d174d;
+  --secondary: #ff73a4;
+  --light-blue: #68baa6;
+  --dark-green: #005242;
+  --disabled: #c6c6c6;
+  --table-header: #d6589f;
+  --table-row-even: #eaf5fd;
+  --table-row-odd: #fff8dc;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 @layer utilities {

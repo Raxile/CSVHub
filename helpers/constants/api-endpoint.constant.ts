@@ -1,5 +1,5 @@
 const SERVICE_ENDPOINT = {
-  API: '/api',
+  API: 'api',
   VERSION: '/V1',
   STUDENTS: '/students',
   FEATURE: {
